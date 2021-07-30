@@ -1,5 +1,6 @@
 import json
 from src.Course import Course
+from src.Log import Log
 
 
 class FileCompare:
@@ -18,14 +19,18 @@ class FileCompare:
                 course = Course(course_dict["name"], course_dict["id"])
                 course.resources = course_dict["resources"]
                 self.courses.append(course)
-
         except:
-            print("Error while loading course file.")
+            Log.warning("Error while loading course file.")
 
     def write_file(self, courses):
-        f = open(self.file, "w")
-        f.write(json.dumps([course.__dict__ for course in courses]))
-        f.close()
+        try:
+            json_content = json.dumps([course.__dict__ for course in courses], indent=2)
+
+            f = open(self.file, "w")
+            f.write(json_content)
+            f.close()
+        except:
+            Log.error("Could not write course file.")
 
     def compare(self, current_courses):
         self.load_file()
@@ -43,7 +48,7 @@ class FileCompare:
                     for current_resource in current_course.resources:
                         if current_resource in course.resources:
                             to_remove.append(current_resource)
-                    
+
                     for remove in to_remove:
                         current_course.resources.remove(remove)
 
