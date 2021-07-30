@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd ..
+directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$directory/.." || exit
 
 sudo docker run \
 	--rm \
