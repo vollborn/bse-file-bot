@@ -43,21 +43,17 @@ python3 bse-file-bot.py
 
 ## Docker
 
-The **BSE File Bot** can be run in a docker container. In the */docker* directory you can find the build- and run-script.
+The **BSE File Bot** can be run in a container using Docker Compose.
 <br />You won't need Python and pip anymore, however the .env file still has to be configured.
 
 Build:
 ```bash
-cd docker
-chmod +x ./build.sh
-./build.sh
+docker-compose build
 ```
 
 Run:
 ```bash
-cd docker
-chmod +x ./run.sh
-./run.sh
+docker-compose up -d
 ```
 
 
@@ -66,10 +62,10 @@ chmod +x ./run.sh
 This tool is supposed to run as a cronjob.
 <br />A possible cron entry to run it every day at 4pm:
 ```bash
-0 16 * * * python3 /path/to/file/bse-file-bot.py
+0 16 * * * python3 /path/to/bse-file-bot.py
 ```
 
 Or in Docker:
 ```bash
-0 16 * * * /path/to/file/docker/run.sh
+0 16 * * * /path/to/docker-compose -f /path/to/docker-compose.yml up -d > /dev/null
 ```
