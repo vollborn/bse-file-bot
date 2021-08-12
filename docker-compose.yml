@@ -5,6 +5,7 @@ services:
   bse-file-bot:
     image: bse-file-bot
     build:
+      context: ./
       dockerfile: Dockerfile
     environment:
       MOODLE_USERNAME: "${MOODLE_USERNAME}"
