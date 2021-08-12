@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+
+  bse-file-bot:
+    image: bse-file-bot
+    build:
+      dockerfile: Dockerfile
+    environment:
+      MOODLE_USERNAME: "${MOODLE_USERNAME}"
+      MOODLE_PASSWORD: "${MOODLE_PASSWORD}"
+      DISCORD_WEBHOOK_URL: "${DISCORD_WEBHOOK_URL}"
+    volumes:
+      - ${APP_PATH}/storage:/app/storage

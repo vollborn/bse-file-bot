@@ -6,9 +6,9 @@ LABEL description="A bot to track file changes on my school platform"
 
 WORKDIR /app
 
-ENV MOODLE_USERNAME=
-ENV MOODLE_PASSWORD=
-ENV DISCORD_WEBHOOK_URL=
+ENV MOODLE_USERNAME=""
+ENV MOODLE_PASSWORD=""
+ENV DISCORD_WEBHOOK_URL=""
 
 COPY src/ ./src
 COPY requirements.txt ./
